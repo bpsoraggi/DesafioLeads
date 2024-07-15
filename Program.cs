@@ -1,6 +1,13 @@
+using LeadsFullStack.Data;
+using LeadsFullStack.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblies(typeof(Program).Assembly));
+builder.Services.AddDbContext<LeadsContext>();
+builder.Services.AddScoped<ILeadRepository, LeadRepository>();
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

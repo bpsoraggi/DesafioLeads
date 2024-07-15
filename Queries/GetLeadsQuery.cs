@@ -1,6 +1,9 @@
-﻿namespace LeadsFullStack.Requests
+﻿using LeadsFullStack.Models;
+using MediatR;
+
+namespace LeadsFullStack.Requests
 {
-    public class GetLeadsRequest
+    public class GetLeadsQuery : IRequest<List<LeadModel>>
     {
     }
 }
