@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Tabs.css';  // Import the common CSS file
+import './Tabs.css';
 
 function Accepted() {
     const [leads, setLeads] = useState([]);
