@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Invited from './components/Invited';
 import Accepted from './components/Accepted';
-import './App.css';  // Import the common CSS file
+import './App.css';
 
 function App() {
     const [activeTab, setActiveTab] = useState('invited');
