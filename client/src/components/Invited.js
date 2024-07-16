@@ -18,7 +18,7 @@ function Invited() {
 
     const updateLead = (id, status, price) => {
         let newPrice = price;
-        if (price > 500) {
+        if (status === 1 && price > 500) {
             newPrice = price * 0.9;
         } else {
             newPrice = -1;
