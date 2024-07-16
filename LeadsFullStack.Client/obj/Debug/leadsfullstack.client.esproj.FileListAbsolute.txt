@@ -1,0 +1,3 @@
+C:\Users\dtiDigital\Documents\DesafioLeads\LeadsFullStack.Client\dist\package-lock.json
+C:\Users\dtiDigital\Documents\DesafioLeads\LeadsFullStack.Client\dist\public\manifest.json
+C:\Users\dtiDigital\Documents\DesafioLeads\LeadsFullStack.Client\obj\Debug\leadsfullstack.client.esproj.CoreCompileInputs.cache

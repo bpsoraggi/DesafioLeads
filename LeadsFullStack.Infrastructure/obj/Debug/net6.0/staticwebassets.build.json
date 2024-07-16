@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "cwmOxYeMdnyW8l6RXt4KzzJvY4Ibl9ObrIwMSf9Qfu4=",
+  "Source": "LeadsFullStack.Infrastructure",
+  "BasePath": "_content/LeadsFullStack.Infrastructure",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\dtiDigital\\Documents\\DesafioLeads\\LeadsFullStack.Domain\\LeadsFullStack.Domain.csproj",
+      "Version": 2,
+      "Source": "LeadsFullStack.Domain",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
