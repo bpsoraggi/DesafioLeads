@@ -73,6 +73,7 @@
     padding: 10px 10px 25px 20px;
     font-size: 14px;
     color: #6f6f6f;
+    border-bottom: 2px solid #ececec;
 }
 
 .lead-footer {
