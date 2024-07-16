@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Invited from './components/Invited';
-import Accepted from './components/Accepted';
 import './App.css';  // Import the common CSS file
+import Tabs from './components/Tabs';
+import Leads from './components/Leads';
 
 function App() {
     const [activeTab, setActiveTab] = useState('invited');
@@ -13,8 +13,7 @@ function App() {
                 <button className={activeTab === 'accepted' ? 'active' : ''} onClick={() => setActiveTab('accepted')}>Accepted</button>
             </div>
             <div className="content">
-                {activeTab === 'invited' && <Invited />}
-                {activeTab === 'accepted' && <Accepted />}
+                {activeTab === "invited" ? <Leads status={0} /> : <Leads status={1} />}
             </div>
         </div>
     );

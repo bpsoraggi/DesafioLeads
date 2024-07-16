@@ -1,37 +1,55 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Tabs.css';  // Import the common CSS file
 
-function Accepted() {
+export const formatDate = (date) => {
+    let d = new Date(date);
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    const month = months[d.getMonth()];
+    const day = d.getDate();
+    const year = d.getFullYear();
+    let hours = d.getHours();
+    const minutes = d.getMinutes();
+    const ampm = hours >= 12 ? 'pm' : 'am';
+
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    const minutesStr = minutes < 10 ? '0' + minutes : minutes;
+
+    return `${month} ${day} ${year} @ ${hours}:${minutesStr} ${ampm}`;
+};
+
+function Leads({ status }) {
     const [leads, setLeads] = useState([]);
+    console.log("status: ", status);
 
     useEffect(() => {
         axios.get('https://localhost:7242/api/Leads')
             .then(response => {
                 console.log(response.data);
-                setLeads(response.data.filter(lead => lead.status === 1));
+                setLeads(response.data.filter(lead => lead.status === status));
             })
             .catch((err) => {
                 console.log(err);
             });
-    }, [leads]);
+    }, [status, leads]);
 
-    const formatDate = (date) => {
-        let d = new Date(date);
-        const months = ['Janurary', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-        const month = months[d.getMonth()];
-        const day = d.getDate();
-        const year = d.getFullYear();
-        let hours = d.getHours();
-        const minutes = d.getMinutes();
-        const ampm = hours >= 12 ? 'pm' : 'am';
-
-        hours = hours % 12;
-        hours = hours ? hours : 12;
-        const minutesStr = minutes < 10 ? '0' + minutes : minutes;
-
-        return `${month} ${day} ${year} @ ${hours}:${minutesStr} ${ampm}`;
+    const updateLead = (id, newStatus, price) => {
+        let newPrice = price;
+        if (price > 500) {
+            newPrice = price * 0.9;
+        } else {
+            newPrice = -1;
+        }
+        axios.put('https://localhost:7242/api/Leads', { id, status: newStatus, discountedPrice: newPrice })
+            .then(response => {
+                console.log(response.data);
+                setLeads(leads.map(lead => lead.id === id ? { ...lead, status: newStatus, price: price } : lead));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
     return (
@@ -42,7 +60,7 @@ function Accepted() {
                         <div className="lead-header">
                             <div className="lead-initial">{lead.firstName.charAt(0)}</div>
                             <div>
-                                <div className="lead-name">{lead.fullName}</div>
+                                <div className="lead-name">{lead.firstName}</div>
                                 <div className="lead-date">{formatDate(lead.dateCreated)}</div>
                             </div>
                         </div>
@@ -56,9 +74,9 @@ function Accepted() {
                                 <div>{lead.category}</div>
                             </div>
                             <div className="lead-job-id">Job ID: {lead.id}</div>
-                            <div className="lead-price">${lead.discountedPrice !== null ? lead.discountedPrice.toFixed(2) : lead.price.toFixed(2)} Lead Invitation</div>
+                            {status === 1 && <div className="lead-price">${lead.discountedPrice !== null ? lead.discountedPrice.toFixed(2) : lead.price.toFixed(2)} Lead Invitation</div>}
                         </div>
-                        <div className="lead-contact">
+                        {status === 1 && <div className="lead-contact">
                             <div className="lead-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#4f4f4f"><path d="M763-145q-121-9-229.5-59.5T339-341q-86-86-135.5-194T144-764q-2-21 12.29-36.5Q170.57-816 192-816h136q17 0 29.5 10.5T374-779l24 106q2 13-1.5 25T385-628l-97 98q20 38 46 73t57.97 65.98Q422-361 456-335.5q34 25.5 72 45.5l99-96q8-8 20-11.5t25-1.5l107 23q17 5 27 17.5t10 29.5v136q0 21.43-16 35.71Q784-143 763-145ZM255-600l70-70-17.16-74H218q5 38 14 73.5t23 70.5Zm344 344q35.1 14.24 71.55 22.62Q707-225 744-220v-90l-75-16-70 70ZM255-600Zm344 344Z" /></svg>
                                 <div>{lead.phoneNumber}</div>
@@ -67,8 +85,17 @@ function Accepted() {
                                 <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#4f4f4f"><path d="M168-192q-29.7 0-50.85-21.16Q96-234.32 96-264.04v-432.24Q96-726 117.15-747T168-768h624q29.7 0 50.85 21.16Q864-725.68 864-695.96v432.24Q864-234 842.85-213T792-192H168Zm312-240L168-611v347h624v-347L480-432Zm0-85 312-179H168l312 179Zm-312-94v-85 432-347Z" /></svg>
                                 <div>{lead.email}</div>
                             </div>
-                        </div>
+                        </div>}
                         <div className="lead-description">{lead.description}</div>
+                        {status === 0 && (
+                            <div className="lead-footer">
+                                <div className="action-btn">
+                                    <button className="btn-accept" onClick={() => updateLead(lead.id, 1, lead.price)}>Accept</button>
+                                    <button className="btn-decline" onClick={() => updateLead(lead.id, 2, lead.price)}>Decline</button>
+                                </div>
+                                <div className="lead-price"><b>${lead.price.toFixed(2)}</b> Lead Invitation</div>
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>
@@ -76,4 +103,4 @@ function Accepted() {
     );
 }
 
-export default Accepted;
+export default Leads;

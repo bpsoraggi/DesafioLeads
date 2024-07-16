@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Invited from './Invited';
-import Accepted from './Accepted';
+import Leads from "./Leads";
 
 const Tabs = () => {
     const [activeTab, setActiveTab] = useState("invited");
@@ -30,7 +29,7 @@ const Tabs = () => {
                 </li>
             </ul>
             <div className="outlet">
-                {activeTab === "invited" ? <Invited /> : <Accepted />}
+                {activeTab === "invited" ? <Leads status={0} /> : <Leads status={1} />}
             </div>
         </div>
     );
