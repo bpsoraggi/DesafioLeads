@@ -16,7 +16,14 @@ namespace LeadsFullStack.API.Handlers
 
         public async Task<List<LeadModel>> Handle(GetLeadsQuery request, CancellationToken cancellationToken)
         {
-            return await _leadRepository.GetLeadsAsync();
+            try
+            {
+                return await _leadRepository.GetLeadsAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while fetching leads", ex);
+            }
         }
     }
 }

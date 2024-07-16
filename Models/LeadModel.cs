@@ -11,8 +11,8 @@
         public string Suburb { get; set; }
         public string Category { get; set; }
         public string Description { get; set; }
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         public int Status { get; set; }
-        public decimal? DiscountedPrice { get; set; }
+        public double? DiscountedPrice { get; set; }
     }
 }
