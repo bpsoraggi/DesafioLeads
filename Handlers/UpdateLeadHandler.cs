@@ -21,6 +21,11 @@ namespace LeadsFullStack.API.Handlers
                 return default;
             }
 
+            if (request.DiscountedPrice != -1)
+            {
+                lead.DiscountedPrice = request.DiscountedPrice;
+            }
+
             lead.Status = request.Status;
             return await _leadRepository.UpdateLeadAsync(lead);
         }

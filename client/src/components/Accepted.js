@@ -14,7 +14,7 @@ function Accepted() {
             .catch((err) => {
                 console.log(err);
             });
-    }, []);
+    }, [leads]);
 
     const formatDate = (date) => {
         let d = new Date(date);

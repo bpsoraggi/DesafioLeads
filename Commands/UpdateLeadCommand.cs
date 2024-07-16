@@ -6,9 +6,9 @@ namespace LeadsFullStack.Commands
     {
         public int Id { get; set; }
         public int Status { get; set; }
-        public decimal DiscountedPrice { get; set; }
+        public double DiscountedPrice { get; set; }
 
-        public UpdateLeadCommand(int id, int status, decimal discountedPrice)
+        public UpdateLeadCommand(int id, int status, double discountedPrice)
         {
             Id = id;
             Status = status;

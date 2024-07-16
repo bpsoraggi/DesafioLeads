@@ -14,17 +14,19 @@ function Invited() {
             .catch((err) => {
                 console.log(err);
             });
-    }, []);
+    }, [leads]);
 
     const updateLead = (id, status, price) => {
         let newPrice = price;
         if (price > 500) {
             newPrice = price * 0.9;
+        } else {
+            newPrice = -1;
         }
-        axios.put('https://localhost:7242/api/Leads', { id: id, status: status, price: newPrice })
+        axios.put('https://localhost:7242/api/Leads', { id: id, status: status, discountedPrice: newPrice })
             .then(response => {
                 console.log(response.data);
-                setLeads(leads.map(lead => lead.id === id ? { ...lead, status: status, price: newPrice } : lead));
+                setLeads(leads.map(lead => lead.id === id ? { ...lead, status: status, price: price } : lead));
             })
             .catch((err) => {
                 console.log(err);
