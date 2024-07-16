@@ -1,29 +1,23 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
 import Invited from './components/Invited';
 import Accepted from './components/Accepted';
-import Tabs from "./components/Tabs";
-import './App.css';
+import './App.css';  // Import the common CSS file
 
+function App() {
+    const [activeTab, setActiveTab] = useState('invited');
 
-const App = () => {
     return (
-        <Router>
-            <div>
-                <div className="App">
-                    <Tabs />
-                </div>
-                <nav>
-                    <NavLink to="/invited" className="nav-link">Invited</NavLink>
-                    <NavLink to="/accepted" className="nav-link">Accepted</NavLink>
-                </nav>
-                <Routes>
-                    <Route path="/invited" element={<Invited />} />
-                    <Route path="/accepted" element={<Accepted />} />
-                </Routes>
+        <div className="App">
+            <div className="tabs">
+                <button className={activeTab === 'invited' ? 'active' : ''} onClick={() => setActiveTab('invited')}>Invited</button>
+                <button className={activeTab === 'accepted' ? 'active' : ''} onClick={() => setActiveTab('accepted')}>Accepted</button>
             </div>
-        </Router>
+            <div className="content">
+                {activeTab === 'invited' && <Invited />}
+                {activeTab === 'accepted' && <Accepted />}
+            </div>
+        </div>
     );
-};
+}
 
 export default App;
