@@ -1,11 +1,19 @@
-using LeadsFullStack.API.Services;
-using LeadsFullStack.Data;
-using LeadsFullStack.Repositories;
+using LeadsFullStack.API.Handlers;
+using LeadsFullStack.Application.Handlers;
+using LeadsFullStack.Application.Services;
+using LeadsFullStack.Domain.Repositories;
+using LeadsFullStack.Infrastructure.Data;
+using LeadsFullStack.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblies(typeof(Program).Assembly));
+//builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblies(typeof(Program).Assembly));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(
+    typeof(GetLeadsHandler).Assembly,
+    typeof(SendEmailHandler).Assembly,
+    typeof(UpdateLeadHandler).Assembly
+    ));
 builder.Services.AddDbContext<LeadsContext>();
 builder.Services.AddScoped<ILeadRepository, LeadRepository>();
 builder.Services.AddScoped<IFakeEmailService, FakeEmailService>();

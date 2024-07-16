@@ -1,6 +1,6 @@
-﻿using LeadsFullStack.Commands;
-using LeadsFullStack.Models;
-using LeadsFullStack.Requests;
+﻿using LeadsFullStack.Application.Commands;
+using LeadsFullStack.Application.Queries;
+using LeadsFullStack.Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
