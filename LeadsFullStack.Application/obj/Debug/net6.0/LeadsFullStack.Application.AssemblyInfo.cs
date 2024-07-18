@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LeadsFullStack.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24221e5b67ad7d96ce0e5208f96bc0116ebac13c")]
 [assembly: System.Reflection.AssemblyProductAttribute("LeadsFullStack.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LeadsFullStack.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

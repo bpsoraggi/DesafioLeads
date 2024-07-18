@@ -1,6 +1,2 @@
 Destinatário: vendas@test.com
 Notificação de que o lead com JobID 6 de nome Adam Hernandez foi aprovado.
-Destinatário: vendas@test.com
-Notificação de que o lead com JobID 6 de nome Adam Hernandez foi aprovado.
-Destinatário: vendas@test.com
-Notificação de que o lead com JobID 6 de nome Adam Hernandez foi aprovado.
