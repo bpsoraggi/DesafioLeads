@@ -31,6 +31,8 @@ Displays all leads in the 'accepted' status. Each lead is represented as a card 
 |:---:|:---:|
 | ![Example](https://github.com/bpsoraggi/DesafioLeads/blob/master/imgs/AcceptedTabEXAMPLE.png) | ![Developed](https://github.com/bpsoraggi/DesafioLeads/blob/master/imgs/AcceptedTab.png) |
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## Getting Started
 
@@ -60,3 +62,5 @@ Displays all leads in the 'accepted' status. Each lead is represented as a card 
     npm install
     npm start
     ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
