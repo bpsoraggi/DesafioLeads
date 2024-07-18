@@ -7,19 +7,19 @@
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 
 # Full Stack .NET Challenge
-This repository contains a Full Stack .NET application developed as a challenge to create a lead management user interface for a fictional company. The application is structured as a Single Page Application (SPA) using React for the frontend, and .NET Core 6 for the backend with a SQL Server database.
+This repository contains a Full Stack .NET application developed as a challenge to create a lead management user interface for a fictional company. The application is structured as a Single Page Application (*SPA*) using React for the frontend, and .NET Core 6 for the backend with a SQL Server database.
 
 ## Features
 
 ### Invited Tab
-Displays all leads in the 'new' status. Each lead is represented as a card, shown in the screenshot below (right), along with a screenshot of the provided example in the challenge's instructions (left).
+Displays all leads in the 'new' status. Each lead is represented as a card, as demonstrated in the screenshot below (*right*). The original example screenshot from the challenge's instructions is also provided (*left*).
 
 | Provided example | Developed UI |
 |:---:|:---:|
 | ![Example](https://github.com/bpsoraggi/DesafioLeads/blob/master/imgs/InvitedTabEXAMPLE.png) | ![Developed](https://github.com/bpsoraggi/DesafioLeads/blob/master/imgs/InvitedTab.png) |
 
 Along with the lead's information, each card also contains the following buttons:
-- **Accept:** Updates the lead status to 'accepted' and applies a 10% discount if the price is over $500. Sends a notification email (simulated by a .txt file).
+- **Accept:** Updates the lead status to 'accepted' and applies a 10% discount if the price is over $500. Sends a notification email (simulated by a .txt file);
 - **Decline:** Updates the lead status to 'declined'.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -37,26 +37,28 @@ Displays all leads in the 'accepted' status. Each lead is represented as a card 
 ## Getting Started
 
 ### Prerequisites
-- [.NET 6 SDK](https://dotnet.microsoft.com/pt-br/download/dotnet/6.0)
-- [Node.js](https://nodejs.org/pt) (for React app)
-- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+- [.NET 6 SDK](https://dotnet.microsoft.com/pt-br/download/dotnet/6.0);
+- [Node.js](https://nodejs.org/pt) (for React app);
+- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads).
 
 ### Installation
-1. Clone the repository: \
-    ``git clone https://github.com/bpsoraggi/DesafioLeads.git``
+1. Clone the repository:
+    ```Shell
+    git clone https://github.com/bpsoraggi/DesafioLeads.git
+    ```
 
-2. Set up the database:
-    - Create a SQL Server database
-    - Populate the database
-    - Update the connection string in ``LeadsFullStack.API/appsettings.json``
+3. Set up the database:
+    - Create a SQL Server database;
+    - Populate the database;
+    - Update the connection string in ``LeadsFullStack.API/appsettings.json``.
 
-3. Run the API:
+4. Run the API:
     ```Shell
     dotnet restore
     dotnet run
     ```
 
-4. Run the React app:
+5. Run the React app:
     ```Shell
     cd ../LeadsFullStack.Client
     npm install
